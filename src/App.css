@@ -170,7 +170,7 @@ input[type="range"]:focus {
   .text-primary {
     bottom: 14%;
     left: 48%;
-    width: 50%;
+    width: 90%;
     font-size: 14px;
   }
 
@@ -189,5 +189,48 @@ input[type="range"]:focus {
   .download-button {
     padding: 10px 20px;
     font-size: 16px;
+  }
+}
+.text-primary {
+  font-size: 4vw; /* responsive font size */
+  position: absolute;
+  bottom: 28%;    /* relative to poster height */
+  left: 46%;      /* relative to poster width */
+  color: black;
+  font-family: 'Anek Malayalam', sans-serif, sans-serif;
+  font-weight: 500;
+  width: 40%;     /* control width */
+  /* background-color: black;  optional for debugging */
+  z-index: 3;
+  word-wrap: break-word;
+}
+
+.text-secondary {
+  font-size: 2.5vw;
+  position: absolute;
+  bottom: 22%;
+  left: 46%;
+  color: black;
+  font-family: 'Anek Malayalam', sans-serif, sans-serif;
+  font-weight: 400;
+  width: 40%;
+  z-index: 3;
+  word-wrap: break-word;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 480px) {
+  .text-primary {
+    font-size: 18px;
+    
+    bottom: 27%;
+    left: 43%;
+    width: 80%;
+    font-weight: 550;
+  }
+  .text-secondary {
+    bottom: 18%;
+    left: 10%;
+    width: 80%;
   }
 }

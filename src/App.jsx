@@ -5,11 +5,14 @@ import './App.css';
 const App = () => {
   const [uploadedImage, setUploadedImage] = useState(null);
   const [zoom, setZoom] = useState(1);
-  const [offsetX, setOffsetX] = useState(0); // left-right
-  const [offsetY, setOffsetY] = useState(0); // up-down
+  const [offsetX, setOffsetX] = useState(0);
+  const [offsetY, setOffsetY] = useState(0);
+
+  // New states for texts
+  const [primaryText, setPrimaryText] = useState('');
+
   const posterRef = useRef();
 
-  // Cleanup created object URL to avoid memory leaks
   useEffect(() => {
     return () => {
       if (uploadedImage) URL.revokeObjectURL(uploadedImage);
@@ -57,7 +60,6 @@ const App = () => {
               />
             </div>
           )}
-          {/* No upload text shown when no image */}
           <input
             type="file"
             accept="image/*"
@@ -66,64 +68,72 @@ const App = () => {
           />
         </label>
 
-        {/* Editable Text Fields */}
-        <p
-          className="text-primary"
-          contentEditable
-          suppressContentEditableWarning
-          placeholder="Enter primary text here"
-        ></p>
-        <p
-          className="text-secondary"
-          contentEditable
-          suppressContentEditableWarning
-          placeholder="Enter secondary text here"
-        ></p>
+        {/* Display texts on poster */}
+        <p className="text-primary">{primaryText || 'Primary text here'}</p>
+     
       </div>
 
-      {/* Image Controls */}
-      {uploadedImage && (
-        <div className="controls-container">
-          <div className="control-group">
-            <label htmlFor="zoom">Zoom:</label>
-            <input
-              type="range"
-              id="zoom"
-              min="1"
-              max="2"
-              step="0.01"
-              value={zoom}
-              onChange={e => setZoom(parseFloat(e.target.value))}
-            />
-          </div>
-
-          <div className="control-group">
-            <label htmlFor="offsetX">Left/Right:</label>
-            <input
-              type="range"
-              id="offsetX"
-              min="-50"
-              max="50"
-              step="1"
-              value={offsetX}
-              onChange={e => setOffsetX(parseInt(e.target.value))}
-            />
-          </div>
-
-          <div className="control-group">
-            <label htmlFor="offsetY">Up/Down:</label>
-            <input
-              type="range"
-              id="offsetY"
-              min="-50"
-              max="50"
-              step="1"
-              value={offsetY}
-              onChange={e => setOffsetY(parseInt(e.target.value))}
-            />
-          </div>
+      {/* Text input controls */}
+      <div className="controls-container">
+        <div
+          className="control-group"
+          style={{ flexDirection: 'column', alignItems: 'flex-start' }}
+        >
+          <label htmlFor="primaryText">Primary Text:</label>
+          <textarea
+            id="primaryText"
+            rows="2"
+            style={{ width: '100%', maxWidth: '768px' }}
+            value={primaryText}
+            onChange={e => setPrimaryText(e.target.value)}
+            placeholder="Enter primary text"
+          />
         </div>
-      )}
+
+        {/* Image Controls only show if image uploaded */}
+        {uploadedImage && (
+          <>
+            <div className="control-group">
+              <label htmlFor="zoom">Zoom:</label>
+              <input
+                type="range"
+                id="zoom"
+                min="1"
+                max="2"
+                step="0.01"
+                value={zoom}
+                onChange={e => setZoom(parseFloat(e.target.value))}
+              />
+            </div>
+
+            <div className="control-group">
+              <label htmlFor="offsetX">Left/Right:</label>
+              <input
+                type="range"
+                id="offsetX"
+                min="-50"
+                max="50"
+                step="1"
+                value={offsetX}
+                onChange={e => setOffsetX(parseInt(e.target.value))}
+              />
+            </div>
+
+            <div className="control-group">
+              <label htmlFor="offsetY">Up/Down:</label>
+              <input
+                type="range"
+                id="offsetY"
+                min="-50"
+                max="50"
+                step="1"
+                value={offsetY}
+                onChange={e => setOffsetY(parseInt(e.target.value))}
+              />
+            </div>
+          </>
+        )}
+      </div>
 
       <button className="download-button" onClick={downloadAsPNG}>
         Download as PNG
