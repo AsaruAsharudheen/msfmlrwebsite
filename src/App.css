@@ -1,0 +1,193 @@
+/* Main Container */
+.poster-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: 'Anek Malayalam', sans-serif, sans-serif;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+/* Poster Wrapper */
+.poster-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 768px;
+  aspect-ratio: 768 / 1194;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Background Image */
+.poster-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+/* Upload Area */
+.upload-area {
+  position: absolute;
+  bottom: 156px;
+  left: 90px;
+  width: 226px;
+  height: 379px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Image Wrapper */
+.image-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+/* Uploaded Image */
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transform-origin: center center;
+  transition: transform 0.2s ease;
+}
+
+/* Editable Text Fields */
+.text-primary {
+  position: absolute;
+  bottom: calc(205 / 1194 * 100%);
+  left: calc(370 / 768 * 100%);
+  width: calc(470 / 768 * 100%);
+  font-size: calc(32 / 768 * 100vw);
+  color: green;
+  z-index: 3;
+  outline: none;
+  cursor: text;
+}
+
+.text-secondary {
+  position: absolute;
+  bottom: calc(160 / 1194 * 100%);
+  left: calc(370 / 768 * 100%);
+  width: calc(470 / 768 * 100%);
+  font-size: calc(18 / 768 * 100vw);
+  color: black;
+  z-index: 3;
+  outline: none;
+  cursor: text;
+}
+
+/* Controls Container */
+.controls-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 768px;
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 200px;
+}
+
+.control-group label {
+  min-width: 70px;
+  font-weight: 600;
+}
+
+/* Download Button */
+.download-button {
+  margin-top: 20px;
+  padding: 10px 30px;
+  background-color: #2d89ef;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  max-width: 768px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.download-button:hover {
+  background-color: #1b5dbf;
+}
+
+/* Remove outline on inputs on focus */
+input[type="range"]:focus {
+  outline: none;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 480px) {
+  .poster-wrapper {
+    max-width: 360px;
+    aspect-ratio: 360 / 560; /* keep roughly same ratio */
+  }
+
+  .upload-area {
+    bottom: 70px;
+    left: 42px;
+    width: 106px;
+    height: 184px;
+    border-radius: 25px;
+  }
+
+  .text-primary {
+    bottom: 14%;
+    left: 48%;
+    width: 50%;
+    font-size: 14px;
+  }
+
+  .text-secondary {
+    bottom: 10%;
+    left: 48%;
+    width: 50%;
+    font-size: 10px;
+  }
+
+  .control-group label {
+    min-width: 50px;
+    font-size: 12px;
+  }
+
+  .download-button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}
