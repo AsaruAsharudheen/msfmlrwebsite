@@ -160,10 +160,10 @@ input[type="range"]:focus {
   }
 
   .upload-area {
-    bottom: 68px;
+    bottom: 74px;
     left: 35px;
-    width: 109px;
-    height: 181px;
+    width: 117px;
+    height: 192px;
     border-radius: 25px;
   }
 
