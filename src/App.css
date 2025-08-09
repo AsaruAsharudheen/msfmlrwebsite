@@ -1,49 +1,44 @@
-/* Main Container */
+\/* --- MAIN CONTAINER --- */
 .poster-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: #eee;
   min-height: 100vh;
   padding: 20px;
-  font-family: 'Anek Malayalam', sans-serif, sans-serif;
-  width: 100vw;
+  font-family: 'Anek Malayalam', sans-serif;
+  width: 100%;
   box-sizing: border-box;
 }
 
-/* Poster Wrapper */
+/* --- POSTER WRAPPER --- */
 .poster-wrapper {
   position: relative;
   width: 100%;
   max-width: 768px;
   aspect-ratio: 768 / 1194;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   background: white;
-  /* border-radius: 10px; */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 
-/* Background Image */
+/* --- BACKGROUND IMAGE --- */
 .poster-bg {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: fill;
-  display: block;
-  /* border-radius: 10px; */
   z-index: 1;
 }
 
-/* Upload Area */
+/* --- UPLOAD AREA --- */
 .upload-area {
   position: absolute;
-  bottom: 156px;
-  left: 90px;
-  width: 226px;
-  height: 379px;
+  bottom: 13%;
+  left: 12%;
+  width: 29%;
+  height: 32%;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 45px;
   display: flex;
@@ -54,54 +49,49 @@
   overflow: hidden;
 }
 
-/* Image Wrapper */
 .image-wrapper {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   overflow: hidden;
   border-radius: 15px;
-  top: 0;
-  left: 0;
   z-index: 2;
 }
 
-/* Uploaded Image */
 .uploaded-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  transform-origin: center center;
-  transition: transform 0.2s ease;
 }
 
-/* Editable Text Fields */
+/* --- TEXT ELEMENTS --- */
 .text-primary {
   position: absolute;
-  bottom: calc(205 / 1194 * 100%);
-  left: calc(370 / 768 * 100%);
-  width: calc(470 / 768 * 100%);
-  font-size: calc(32 / 768 * 100vw);
-  color: green;
+  bottom: 28%;
+  left: 46%;
+  width: 40%;
+  color: black;
+  font-family: 'Anek Malayalam', sans-serif;
+  font-weight: 500;
+  font-size: clamp(14px, 4vw, 32px); /* Scales but not too small or large */
   z-index: 3;
-  outline: none;
-  cursor: text;
+  word-wrap: break-word;
 }
 
 .text-secondary {
   position: absolute;
-  bottom: calc(160 / 1194 * 100%);
-  left: calc(370 / 768 * 100%);
-  width: calc(470 / 768 * 100%);
-  font-size: calc(18 / 768 * 100vw);
+  bottom: 22%;
+  left: 46%;
+  width: 40%;
   color: black;
+  font-family: 'Anek Malayalam', sans-serif;
+  font-weight: 400;
+  font-size: clamp(10px, 2.5vw, 18px);
   z-index: 3;
-  outline: none;
-  cursor: text;
+  word-wrap: break-word;
 }
 
-/* Controls Container */
+/* --- CONTROLS --- */
 .controls-container {
   margin-top: 20px;
   width: 100%;
@@ -110,7 +100,6 @@
   justify-content: space-around;
   gap: 10px;
   flex-wrap: wrap;
-  box-sizing: border-box;
   padding: 0 10px;
 }
 
@@ -126,7 +115,7 @@
   font-weight: 600;
 }
 
-/* Download Button */
+/* --- BUTTON --- */
 .download-button {
   margin-top: 20px;
   padding: 10px 30px;
@@ -137,48 +126,40 @@
   cursor: pointer;
   font-size: 18px;
   font-weight: 600;
-  transition: background-color 0.3s ease;
-  max-width: 768px;
   width: 100%;
-  box-sizing: border-box;
+  max-width: 768px;
 }
 
 .download-button:hover {
   background-color: #1b5dbf;
 }
 
-/* Remove outline on inputs on focus */
-input[type="range"]:focus {
-  outline: none;
-}
-
-/* --- MOBILE RESPONSIVE --- */
+/* --- MOBILE ADJUSTMENTS --- */
 @media (max-width: 480px) {
   .poster-wrapper {
-    max-width: 560px;
-    aspect-ratio: 360 / 560; /* keep roughly same ratio */
+    aspect-ratio: 360 / 560;
   }
 
   .upload-area {
-    bottom: 70px;
-    left: 35px;
-    width: 112px;
-    height: 186px;
+    bottom: 12%;
+    left: 10%;
+    width: 30%;
+    height: 33%;
     border-radius: 25px;
   }
 
   .text-primary {
-    bottom: 14%;
-    left: 48%;
-    width: 90%;
-    font-size: 12px;
+    bottom: 27%;
+    left: 45%;
+    width: 50%;
+    font-size: clamp(12px, 4.5vw, 20px);
   }
 
   .text-secondary {
-    bottom: 10%;
-    left: 48%;
+    bottom: 18%;
+    left: 45%;
     width: 50%;
-    font-size: 10px;
+    font-size: clamp(10px, 3vw, 16px);
   }
 
   .control-group label {
@@ -189,48 +170,5 @@ input[type="range"]:focus {
   .download-button {
     padding: 10px 20px;
     font-size: 16px;
-  }
-}
-.text-primary {
-  font-size: 4vw; /* responsive font size */
-  position: absolute;
-  bottom: 28%;    /* relative to poster height */
-  left: 46%;      /* relative to poster width */
-  color: black;
-  font-family: 'Anek Malayalam', sans-serif, sans-serif;
-  font-weight: 500;
-  width: 40%;     /* control width */
-  /* background-color: black;  optional for debugging */
-  z-index: 3;
-  word-wrap: break-word;
-}
-
-.text-secondary {
-  font-size: 2.5vw;
-  position: absolute;
-  bottom: 22%;
-  left: 46%;
-  color: black;
-  font-family: 'Anek Malayalam', sans-serif, sans-serif;
-  font-weight: 400;
-  width: 40%;
-  z-index: 3;
-  word-wrap: break-word;
-}
-
-/* Mobile responsive adjustments */
-@media (max-width: 480px) {
-  .text-primary {
-    font-size: 14px;
-    
-    bottom: 27%;
-    left: 43%;
-    width: 80%;
-    font-weight: 450;
-  }
-  .text-secondary {
-    bottom: 18%;
-    left: 10%;
-    width: 80%;
   }
 }
