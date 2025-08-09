@@ -41,7 +41,7 @@ const App = () => {
     <div className="poster-container">
       <div className="poster-wrapper" ref={posterRef}>
         <img
-          src="/msf nellaya pravarthana fund.png"
+          src="/msf nellaya pravarthana fund2.png"
           alt="Poster Background"
           className="poster-bg"
         />
