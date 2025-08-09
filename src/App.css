@@ -1,4 +1,4 @@
-\/* --- MAIN CONTAINER --- */
+/* --- MAIN CONTAINER --- */
 .poster-container {
   display: flex;
   flex-direction: column;
@@ -15,8 +15,8 @@
 .poster-wrapper {
   position: relative;
   width: 100%;
-  max-width: 768px;
-  aspect-ratio: 768 / 1194;
+  max-width: 1080px; /* Matches image width */
+  aspect-ratio: 1080 / 1350; /* Keeps exact background ratio */
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   overflow: hidden;
@@ -28,7 +28,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: cover; /* Fill area without distortion */
+  object-position: center; /* Keep centered */
   z-index: 1;
 }
 
@@ -73,7 +74,7 @@
   color: black;
   font-family: 'Anek Malayalam', sans-serif;
   font-weight: 500;
-  font-size: clamp(14px, 4vw, 32px); /* Scales but not too small or large */
+  font-size: clamp(14px, 4vw, 32px);
   z-index: 3;
   word-wrap: break-word;
 }
@@ -95,7 +96,7 @@
 .controls-container {
   margin-top: 20px;
   width: 100%;
-  max-width: 768px;
+  max-width: 1080px; /* Matches poster width */
   display: flex;
   justify-content: space-around;
   gap: 10px;
@@ -127,7 +128,7 @@
   font-size: 18px;
   font-weight: 600;
   width: 100%;
-  max-width: 768px;
+  max-width: 1080px;
 }
 
 .download-button:hover {
@@ -137,7 +138,9 @@
 /* --- MOBILE ADJUSTMENTS --- */
 @media (max-width: 480px) {
   .poster-wrapper {
-    aspect-ratio: 360 / 560;
+    width: 100vw; /* Full width on mobile */
+    max-width: none;
+    aspect-ratio: 1080 / 1350; /* Keep exact image ratio */
   }
 
   .upload-area {
@@ -152,7 +155,8 @@
     bottom: 27%;
     left: 45%;
     width: 50%;
-    font-size: clamp(12px, 4.5vw, 20px);
+    font-size: clamp(12px, 4.3vw, 20px);
+    font-weight: 400;
   }
 
   .text-secondary {
