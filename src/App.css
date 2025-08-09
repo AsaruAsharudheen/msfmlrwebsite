@@ -221,7 +221,7 @@ input[type="range"]:focus {
 /* Mobile responsive adjustments */
 @media (max-width: 480px) {
   .text-primary {
-    font-size: 18px;
+    font-size: 12px;
     
     bottom: 27%;
     left: 43%;
